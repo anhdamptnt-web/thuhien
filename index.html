@@ -1,188 +1,214 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dương Thu Hiền</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dương Thu Hiền</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", sans-serif;
-    }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", sans-serif;
+}
 
-    body {
-      color: white;
-      overflow-x: hidden;
-      background: black;
-    }
+body{
+color:white;
+overflow-x:hidden;
+background:black;
+}
 
-    /* VIDEO BACKGROUND */
-    .video-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
+/* VIDEO BACKGROUND */
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
 
-    /* DARK OVERLAY */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 10, 25, 0.65);
-      backdrop-filter: blur(12px);
-      z-index: -1;
-    }
+/* OVERLAY SÁNG HƠN NHẸ */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,15,40,0.45);
+backdrop-filter:blur(10px);
+z-index:-1;
+}
 
-    .container {
-      min-height: 100vh;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 40px;
-    }
+.container{
+min-height:100vh;
+padding:60px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:40px;
+}
 
-    /* PROFILE FRAME */
-    .profile-frame {
-      width: 100%;
-      max-width: 900px;
-      background: linear-gradient(145deg, rgba(0,0,0,0.7), rgba(10,20,40,0.7));
-      border-radius: 20px;
-      padding: 25px;
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    }
+/* PROFILE FRAME SÁNG NHẸ */
+.profile-frame{
+width:100%;
+max-width:900px;
+background:linear-gradient(
+145deg,
+rgba(20,30,60,0.75),
+rgba(10,20,40,0.75)
+);
+border-radius:20px;
+padding:25px;
+display:flex;
+align-items:center;
+gap:25px;
+border:1px solid rgba(255,255,255,0.25);
+backdrop-filter:blur(20px);
+box-shadow:0 0 30px rgba(0,0,0,0.5);
+}
 
-    .avatar {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,0.4);
-      background: #111;
-    }
+.avatar{
+width:130px;
+height:130px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid rgba(255,255,255,0.55);
+background:#111;
+}
 
-    .profile-info h1 {
-      font-size: 32px;
-      letter-spacing: 1px;
-    }
+.profile-info h1{
+font-size:34px;
+letter-spacing:1px;
+}
 
-    .profile-info p {
-      opacity: 0.8;
-      margin-top: 6px;
-    }
+.profile-info p{
+opacity:0.9;
+margin-top:6px;
+font-size:17px;
+}
 
-    /* MAIN GRID */
-    .grid {
-      width: 100%;
-      max-width: 900px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+/* GRID */
+.grid{
+width:100%;
+max-width:900px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
 
-    .card {
-      background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(10,20,40,0.6));
-      padding: 22px;
-      border-radius: 18px;
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: 0.3s;
-    }
+/* CARD SÁNG HƠN NHẸ */
+.card{
+background:linear-gradient(
+145deg,
+rgba(25,35,70,0.70),
+rgba(15,25,50,0.70)
+);
+padding:22px;
+border-radius:18px;
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.25);
+transition:0.3s;
+box-shadow:0 0 18px rgba(0,0,0,0.35);
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      border: 1px solid rgba(255,255,255,0.35);
-    }
+.card:hover{
+transform:translateY(-6px);
+border:1px solid rgba(255,255,255,0.45);
+box-shadow:0 0 25px rgba(0,0,0,0.45);
+}
 
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
+.card h3{
+margin-bottom:10px;
+font-size:22px;
+}
 
-    .music-wide {
-      grid-column: 1 / -1;
-    }
+.card p{
+opacity:0.92;
+line-height:1.5;
+}
 
-    @media (max-width: 600px) {
-      .profile-frame {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+.music-wide{
+grid-column:1 / -1;
+}
+
+iframe{
+width:100%;
+height:160px;
+border-radius:14px;
+border:none;
+margin-bottom:10px;
+}
+
+@media(max-width:600px){
+.profile-frame{
+flex-direction:column;
+text-align:center;
+}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- VIDEO BACKGROUND (ÂM THANH LẤY TỪ VIDEO) -->
-  <video class="video-bg" autoplay loop playsinline id="bgVideo">
-    <source src="bg1.mp4" type="video/mp4">
-  </video>
+<!-- VIDEO BACKGROUND -->
+<video class="video-bg" autoplay loop playsinline id="bgVideo">
+<source src="bg1.mp4" type="video/mp4">
+</video>
 
-  <div class="overlay"></div>
+<div class="overlay"></div>
 
-  <div class="container">
+<div class="container">
 
-    <!-- PROFILE FRAME -->
-    <div class="profile-frame">
-      <img src="images/hien.jpg" class="avatar" alt="avatar">
-      <div class="profile-info">
-        <h1>Dương Thu Hiền</h1>
-        <p>Sinh: 22/05/2008</p>
-        <p>Vibe: Khám phá • Chụp ảnh • Sự kiện • Phim đa thể loại 😎</p>
-      </div>
-    </div>
+<!-- PROFILE -->
+<div class="profile-frame">
+<img src="images/hien.jpg" class="avatar">
+<div class="profile-info">
+<h1>Dương Thu Hiền</h1>
+<p>Sinh: 22/05/2008</p>
+<p>Vibe: Khám phá • Chụp ảnh • Sự kiện • Phim đa thể loại 😎</p>
+</div>
+</div>
 
-    <!-- CONTENT GRID -->
-    <div class="grid">
+<!-- GRID -->
+<div class="grid">
 
-      <div class="card">
-        <h3>Sở thích</h3>
-        <p>Đi đây đó, khám phá mọi ngóc ngách, săn ảnh đẹp và trải nghiệm sự kiện.</p>
-      </div>
+<div class="card">
+<h3>Sở thích</h3>
+<p>Đi đây đó, khám phá mọi ngóc ngách, săn ảnh đẹp và trải nghiệm sự kiện.</p>
+</div>
 
-      <div class="card">
-        <h3>Phong cách</h3>
-        <p>Tối giản, huyền bí, tông đen + xanh than, thiên về cảm giác cinematic.</p>
-      </div>
+<div class="card">
+<h3>Phong cách</h3>
+<p>Tối giản, huyền bí, tông đen + xanh than, thiên về cảm giác cinematic.</p>
+</div>
 
-      <div class="card">
-        <h3>Phim yêu thích</h3>
-        <p>Xem đa thể loại, ưu tiên phim có chiều sâu hình ảnh và cảm xúc.</p>
-      </div>
+<div class="card">
+<h3>Phim yêu thích</h3>
+<p>Xem đa thể loại, ưu tiên phim có chiều sâu hình ảnh và cảm xúc.</p>
+</div>
 
-      <div class="card music-wide">
-        <h3>Nhạc yêu thích</h3>
-        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/1H0zKZDwR19OGD3zKrwuTG?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5DB1UwivnS4gmcZ27TiYnE?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/50x1Ic8CaXkYNvjmxe3WXy?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
+<div class="card music-wide">
+<h3>Nhạc yêu thích</h3>
 
-    </div>
+<iframe src="https://open.spotify.com/embed/track/1H0zKZDwR19OGD3zKrwuTG"></iframe>
+<iframe src="https://open.spotify.com/embed/track/5DB1UwivnS4gmcZ27TiYnE"></iframe>
+<iframe src="https://open.spotify.com/embed/track/50x1Ic8CaXkYNvjmxe3WXy"></iframe>
 
-  </div>
+</div>
 
-  <script>
-    // Tránh browser chặn autoplay có âm thanh
-    document.addEventListener("click", () => {
-      const video = document.getElementById("bgVideo");
-      video.play().catch(() => {});
-    }, { once: true });
-  </script>
+</div>
+</div>
+
+<script>
+document.addEventListener("click",()=>{
+const video=document.getElementById("bgVideo");
+video.play().catch(()=>{});
+},{once:true});
+</script>
 
 </body>
 </html>
+
